@@ -6,13 +6,14 @@ Universidad Nacional de Ingeniería.
 
 ## Estado
 
-Página placeholder ("Próximamente"). Su propósito actual es establecer el
-subdominio institucional y validar la configuración DNS antes del desarrollo
-del micrositio completo.
+Base del sitio institucional con contenido real y pendientes marcados para
+revisión de la oficina (botón "Pendientes" con modo de resaltado). Tiene
+`noindex` en `index.html` y en `vercel.json` hasta el lanzamiento.
 
 ## Stack
 
-HTML estático, un solo archivo (`index.html`). Sin dependencias, sin build.
+HTML estático (`index.html` + `img/`). Sin build. GSAP 3.13 y Google Fonts
+se cargan desde CDN.
 
 ## Despliegue
 

@@ -1,108 +1,709 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Offset FIM — UNI</title>
-<meta name="description" content="Offset de la FIM. Oficina de Compensaciones Industriales y Sociales Offset para la Innovación y el Desarrollo Tecnológico (OCISO-IDT). Universidad Nacional de Ingeniería.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- Base de maqueta: quitar "noindex" aquí y en vercel.json cuando el sitio se lance -->
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0A2540">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_PE">
+<meta property="og:title" content="Offset FIM · OCISO-IDT · FIM UNI">
+<meta property="og:description" content="Offset de la FIM. Oficina de Compensaciones Industriales y Sociales Offset para la Innovación y el Desarrollo Tecnológico (OCISO-IDT), Facultad de Ingeniería Mecánica, Universidad Nacional de Ingeniería.">
+<meta property="og:image" content="og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<title>Offset FIM</title>
+<meta name="description" content="Offset de la FIM. Oficina de Compensaciones Industriales y Sociales Offset para la Innovación y el Desarrollo Tecnológico (OCISO-IDT), Facultad de Ingeniería Mecánica, Universidad Nacional de Ingeniería.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap">
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
+[hidden]{display:none!important}
+:root{
+  /* Layout: columna editorial de 1240px sobre blanco. El tipo grande ordena la lectura, la foto se abre a sangre al bajar
+     y el navy aparece solo en el cierre. Un único acento: el rojo antiincrustante de los cascos. */
+  --white:#FFFFFF;
+  --paper:#F3F5F7;
+  --ink:#0E1B2A;
+  --navy:#0A2540;
+  --muted:#566271;
+  --soft:#6B7684;
+  --line:#DCE1E7;
+  --accent:#C2401C;
+  --accent-dark:#9E3114;
+  --on-navy:#EAF0F6;
+  --on-navy-muted:#A9B8C9;
+  --mark:#FFF0B3;
+  --f:'Archivo','Helvetica Neue',Helvetica,Arial,sans-serif;
+  --ease-out:cubic-bezier(.22,1,.36,1);
+  --hdr:68px;
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:calc(var(--hdr) + 12px)}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--f);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-variant-numeric:tabular-nums}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--white)}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+h1,h2,h3,p,ul,ol,dl,dd,figure{margin:0}
+ul,ol{padding:0;list-style:none}
+h1,h2,h3{font-weight:600;text-wrap:balance;letter-spacing:0}
+p{text-wrap:pretty}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.wrap{max-width:1240px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media (min-width:760px){.wrap{padding-left:max(40px,env(safe-area-inset-left,0px));padding-right:max(40px,env(safe-area-inset-right,0px))}}
+.skip{position:absolute;left:16px;top:-80px;z-index:90;background:var(--navy);color:#fff;padding:10px 14px;border-radius:6px;text-decoration:none}
+.skip:focus{top:calc(env(safe-area-inset-top,0px) + 10px)}
 
-  body {
-    background:#0A2540;
-    color:#fff;
-    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    padding:32px 28px;
-  }
+/* ---------- Botones ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;border-radius:6px;border:1px solid transparent;font:600 16px/1 var(--f);text-decoration:none;cursor:pointer;transition:background-color .2s var(--ease-out),color .2s var(--ease-out),transform .12s var(--ease-out)}
+.btn:active{transform:scale(.97)}
+.btn--accent{background:var(--accent);color:#fff}
+.btn--accent:hover{background:var(--accent-dark)}
+.btn--ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn--ghost:hover{background:var(--ink);color:#fff}
+.btn svg{width:18px;height:18px;flex:none}
+.link{color:var(--accent-dark);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+.link:hover{color:var(--ink)}
 
-  .meta {
-    font-family:"Courier New",monospace;
-    font-size:12px;
-    letter-spacing:.14em;
-    text-transform:uppercase;
-    line-height:1.9;
-  }
+/* ---------- Pendientes: discretos por defecto, resaltados en modo revisión ---------- */
+.pend{color:var(--soft)}
+.pend .hard{display:none}
+.review .pend{background:var(--mark);color:#3D3000;border-radius:3px;padding:1px 6px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.review .pend .soft{display:none}
+.review .pend .hard{display:inline}
+.skel{display:block;height:.62em;border-radius:3px;background:var(--line)}
+.review .skel{display:none}
 
-  header {
-    border-bottom:1px solid #fff;
-    padding-bottom:14px;
-  }
+/* ---------- Header ---------- */
+.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--white);transition:box-shadow .25s var(--ease-out)}
+.hdr.is-scrolled{box-shadow:0 1px 0 var(--line)}
+.hdr .wrap{display:flex;align-items:center;gap:28px;min-height:var(--hdr)}
+.brand{display:flex;align-items:baseline;gap:12px;text-decoration:none;margin-right:auto;color:var(--navy)}
+.brand b{font-weight:700;font-size:21px;text-transform:uppercase;font-stretch:108%;letter-spacing:.01em}
+.brand span{font-size:14px;color:var(--muted)}
+.nav ul{display:flex;gap:26px}
+.nav a{font-size:16px;text-decoration:none;color:var(--ink);padding-block:8px;background:linear-gradient(var(--accent),var(--accent)) left bottom/0 2px no-repeat;transition:background-size .25s var(--ease-out)}
+.nav a:hover,.nav a[aria-current="true"]{background-size:100% 2px}
+.menu-btn{display:none;align-items:center;gap:10px;min-height:44px;padding:0 14px;border:1px solid var(--ink);border-radius:6px;background:var(--white);color:var(--ink);font:500 16px var(--f);cursor:pointer}
+.menu-btn:active{transform:scale(.97)}
+@media (max-width:960px){.nav,.hdr .btn{display:none}.menu-btn{display:inline-flex}}
 
-  main {
-    flex:1;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    padding:64px 0;
-  }
+/* Menú móvil escalonado (StaggeredMenu) */
+.sm{position:fixed;inset:0;z-index:80;pointer-events:none}
+.sm[hidden]{display:none}
+.sm.is-open{pointer-events:auto}
+.sm-layer{position:absolute;inset:0 0 0 auto;width:min(100%,520px)}
+.sm-layer--a{background:var(--accent)}
+.sm-layer--b{background:#0F3256}
+.sm-panel{position:absolute;inset:0 0 0 auto;width:min(100%,520px);background:var(--navy);color:var(--on-navy);display:flex;flex-direction:column;padding:calc(env(safe-area-inset-top,0px) + 18px) max(24px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 28px) 28px}
+.sm-top{display:flex;justify-content:space-between;align-items:center;min-height:44px}
+.sm-top b{font-weight:700;text-transform:uppercase;font-stretch:108%;letter-spacing:.01em}
+.sm-close{min-height:44px;padding:0 14px;border:1px solid rgba(255,255,255,.6);border-radius:6px;background:transparent;color:#fff;font:500 16px var(--f);cursor:pointer}
+.sm-list{margin-top:auto;margin-bottom:auto;display:grid;gap:6px}
+.sm-list li{overflow:hidden}
+.sm-list a{display:block;font-size:clamp(34px,9vw,52px);font-weight:600;line-height:1.15;color:#fff;text-decoration:none;padding-block:4px}
+.sm-list a:hover{color:var(--on-navy-muted)}
+.sm-foot{font-size:15px;color:var(--on-navy-muted)}
 
-  h1 {
-    font-size:clamp(56px,17vw,220px);
-    font-weight:700;
-    letter-spacing:-.04em;
-    line-height:.88;
-    text-transform:uppercase;
-  }
+/* ---------- Hero ---------- */
+.hero{padding-top:clamp(28px,5vw,64px)}
+.context{font-size:16px;color:var(--muted)}
+.wordmark{margin-top:clamp(18px,3vw,36px);font-size:clamp(78px,15.2vw,232px);line-height:.86;font-weight:700;text-transform:uppercase;font-stretch:104%;color:var(--navy);letter-spacing:0;margin-left:-.03em}
+.wordmark .w{display:inline-block}
+@media (min-width:900px){.wordmark{font-size:clamp(120px,11.6vw,176px);white-space:nowrap}}
+.hero-meta{display:grid;gap:24px;margin-top:clamp(24px,3.5vw,44px)}
+.fullname{font-size:clamp(21px,2.1vw,28px);line-height:1.3;font-weight:500;max-width:32ch;color:var(--ink)}
+.hero-side{display:grid;gap:14px;align-content:start;max-width:40ch}
+.sigla{font-weight:600;font-size:17px;color:var(--navy)}
+.hero-side .btn{justify-self:start;margin-top:6px}
+@media (min-width:900px){
+  .hero-meta{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:28px}
+  .fullname{grid-column:1 / span 7}
+  .hero-side{grid-column:9 / span 4}
+}
+.expand{margin-top:clamp(36px,5vw,64px)}
+.expand-frame{overflow:hidden;background:var(--navy);will-change:clip-path}
+.expand-frame img{width:100%;aspect-ratio:16/8.4;object-fit:cover;object-position:50% 46%;will-change:transform}
+@media (max-width:700px){.expand-frame img{aspect-ratio:4/3.4}}
+.caption{display:flex;justify-content:space-between;gap:8px 24px;flex-wrap:wrap;padding-top:12px;font-size:15px;color:var(--muted)}
 
-  .sigla {
-    font-family:"Courier New",monospace;
-    font-size:clamp(12px,1.6vw,15px);
-    letter-spacing:.22em;
-    text-transform:uppercase;
-    margin-top:24px;
-  }
+/* ---------- Secciones ---------- */
+.section{padding-block:clamp(72px,10vw,140px)}
+.section--paper{background:var(--paper)}
+.h2{font-size:clamp(32px,3.7vw,54px);line-height:1.08;color:var(--navy)}
+.lead{font-size:clamp(19px,1.5vw,21px);line-height:1.55;color:var(--ink);max-width:60ch}
+.prose{display:grid;gap:16px;max-width:62ch;color:var(--ink)}
+.cols{display:grid;gap:28px}
+@media (min-width:900px){
+  .cols{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:28px}
+  .c-l{grid-column:1 / span 5}
+  .c-r{grid-column:7 / span 6}
+  .c-r-wide{grid-column:6 / span 7}
+}
 
-  h2 {
-    font-size:clamp(15px,2.4vw,26px);
-    font-weight:400;
-    line-height:1.3;
-    max-width:22ch;
-    margin-top:12px;
-    text-transform:uppercase;
-  }
+/* Declaración (ScrollReveal) */
+.statement{font-size:clamp(28px,3.3vw,48px);line-height:1.22;font-weight:500;color:var(--navy);max-width:24ch}
+@media (min-width:900px){.statement{max-width:30ch}}
+.statement .word{display:inline-block}
+.statement-note{margin-top:20px;font-size:15px}
+.about{margin-top:clamp(56px,8vw,112px)}
 
-  .estado {
-    border-top:1px solid #fff;
-    border-bottom:1px solid #fff;
-    margin-top:56px;
-    padding:16px 0;
-    font-family:"Courier New",monospace;
-    font-size:clamp(13px,2vw,18px);
-    letter-spacing:.2em;
-    text-transform:uppercase;
-  }
+/* Cómo funciona */
+.howto-head{display:grid;gap:16px;align-content:start}
+@media (min-width:900px){.howto-head{position:sticky;top:calc(var(--hdr) + 40px)}}
+.steps-wrap{position:relative;padding-left:34px}
+.steps-wrap::before{content:"";position:absolute;left:5px;top:10px;bottom:10px;width:2px;background:var(--line)}
+.steps{display:grid;gap:clamp(40px,6vw,72px)}
+.steps-progress{position:absolute;left:5px;top:10px;bottom:10px;width:2px;background:var(--accent);transform-origin:top}
+.step{position:relative;display:grid;gap:10px}
+.step::before{content:"";position:absolute;left:-34px;top:12px;width:12px;height:12px;border-radius:50%;background:var(--white);box-shadow:inset 0 0 0 2px var(--navy)}
+.step h3{font-size:clamp(24px,2.3vw,32px);line-height:1.15;color:var(--navy)}
+.step p{max-width:52ch;color:var(--ink)}
+.howto-note{margin-top:clamp(32px,5vw,48px);font-size:15px}
 
-  footer {
-    border-top:1px solid #fff;
-    padding-top:14px;
-    display:flex;
-    justify-content:space-between;
-    gap:24px;
-    flex-wrap:wrap;
-  }
+/* Líneas de trabajo */
+.lines{display:grid;gap:clamp(28px,4vw,44px)}
+.wline{display:grid;gap:12px;padding-top:4px}
+.wline .t{font-size:clamp(24px,2.4vw,34px);font-weight:600;line-height:1.15;color:var(--navy)}
+.wline .t .skel{height:.7em;width:min(420px,70%);background:#D3D9E0}
+.wline .d{display:grid;gap:8px;max-width:58ch}
+.wline .d .skel:nth-child(2){width:78%}
+@media (min-width:900px){.wline{grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:28px;align-items:start}}
+
+/* Ecosistema */
+.partners{display:grid;gap:18px;margin-top:8px}
+.partners li{display:grid;gap:2px}
+.partners b{font-size:clamp(22px,2vw,28px);font-weight:600;line-height:1.2;color:var(--navy)}
+.partners span{font-size:15px;color:var(--muted)}
+.ag{display:flex;gap:8px;height:clamp(340px,40vw,500px);margin-top:clamp(48px,7vw,88px)}
+.ag-panel{position:relative;flex:1 1 0;min-width:0;min-height:0;overflow:hidden;border:0;padding:0;margin:0;border-radius:10px;background:var(--navy);cursor:pointer;color:#fff;text-align:left;font:inherit;transition:flex-grow .6s var(--ease-out)}
+.ag-panel.is-active{flex-grow:3.4;cursor:default}
+.ag-panel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) brightness(.72);transform:scale(1.06);transition:filter .6s var(--ease-out),transform .8s var(--ease-out)}
+.ag-panel.is-active img{filter:none;transform:scale(1)}
+.ag-label{position:absolute;left:18px;right:18px;bottom:16px;display:grid;gap:2px;opacity:0;transform:translateX(-12px);transition:opacity .35s var(--ease-out),transform .45s var(--ease-out);text-shadow:0 1px 12px rgba(0,0,0,.45)}
+.ag-panel.is-active .ag-label{opacity:1;transform:none;transition-delay:.15s}
+.ag-label b{font-size:19px;font-weight:600;line-height:1.25}
+.ag-label span{font-size:14px;color:#E1E8EF}
+.ag-panel::after{content:"";position:absolute;inset:auto 0 0 0;height:46%;background:linear-gradient(transparent,rgba(6,22,40,.72));opacity:0;transition:opacity .45s var(--ease-out);pointer-events:none}
+.ag-panel.is-active::after{opacity:1}
+@media (max-width:700px){
+  .ag{flex-direction:column;height:620px}
+  .ag-panel.is-active{flex-grow:4}
+}
+.allies{margin-top:28px;font-size:15px}
+
+/* Trayectoria */
+.facts{display:flex;flex-wrap:wrap;gap:10px 40px;margin-top:22px;font-size:17px;color:var(--ink)}
+.facts b{font-weight:600;color:var(--navy)}
+.timeline{display:grid;gap:44px;margin-top:clamp(48px,7vw,80px)}
+.tl{display:grid;gap:10px;align-content:start}
+.tl .yr{font-size:clamp(60px,6.6vw,96px);line-height:.9;font-weight:600;color:var(--navy);font-stretch:96%}
+.tl .when{font-size:15px;color:var(--muted)}
+.tl p{max-width:34ch}
+@media (min-width:900px){.timeline{grid-template-columns:repeat(4,minmax(0,1fr));column-gap:28px}}
+.doc{display:inline-flex;align-items:center;gap:14px;margin-top:6px;padding:0;border:0;background:none;cursor:zoom-in;text-align:left;font:inherit;color:var(--ink)}
+.doc img{width:64px;height:68px;object-fit:cover;border-radius:4px;box-shadow:0 0 0 1px var(--line);transition:transform .2s var(--ease-out)}
+.doc:hover img{transform:scale(1.04)}
+.doc span{font-size:15px;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+.tl-pend{margin-top:40px;font-size:15px}
+
+/* Equipo */
+.team{display:grid;gap:28px;align-items:center}
+.monogram{width:clamp(120px,14vw,168px);aspect-ratio:1;border-radius:10px;background:var(--navy);color:#fff;display:grid;place-items:center;font-size:clamp(40px,4.4vw,56px);font-weight:600;font-stretch:104%}
+.person h3{font-size:clamp(30px,3.4vw,48px);line-height:1.08;color:var(--navy)}
+.person p{color:var(--muted);margin-top:8px}
+.person .pend{display:inline-block;margin-top:12px;font-size:15px}
+@media (min-width:700px){.team{grid-template-columns:auto minmax(0,1fr);column-gap:36px}}
+.team-more{margin-top:clamp(36px,5vw,56px);font-size:16px}
+
+/* Contacto */
+.closing{position:relative;background:var(--navy);color:var(--on-navy);overflow:hidden}
+.closing-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.3}
+.closing .wrap{position:relative}
+.closing .h2{color:#fff;max-width:16ch}
+.closing-grid{display:grid;gap:40px}
+.cdl{display:grid;gap:22px}
+.cdl dt{font-size:15px;color:var(--on-navy-muted)}
+.cdl dd{font-size:19px;color:#fff;margin-top:2px}
+.closing .pend{color:var(--on-navy-muted)}
+.review .closing .pend{color:#3D3000}
+.closing a{color:#fff}
+@media (min-width:900px){.closing-grid{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:28px}.closing-grid > :first-child{grid-column:1 / span 5}.closing-grid > :last-child{grid-column:7 / span 6}}
+
+/* Footer */
+.foot{background:var(--navy);color:var(--on-navy-muted);font-size:15px;padding-block:28px calc(28px + 64px)}
+.foot .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 28px;border-top:1px solid rgba(255,255,255,.14);padding-top:24px}
+.foot b{color:#fff;font-weight:600}
+
+/* Nota de maqueta */
+.review-btn{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:70;min-height:44px;padding:0 16px;border-radius:8px;border:0;background:var(--ink);color:#fff;font:500 15px var(--f);cursor:pointer;box-shadow:0 6px 24px rgba(14,27,42,.22);transition:transform .12s var(--ease-out)}
+.review-btn:active{transform:scale(.97)}
+dialog{border:0;padding:0;border-radius:12px;background:var(--white);color:var(--ink);width:min(620px,calc(100vw - 32px));max-height:calc(100dvh - 48px);box-shadow:0 24px 80px rgba(6,22,40,.3)}
+dialog::backdrop{background:rgba(6,22,40,.5)}
+.dlg{padding:26px;display:grid;gap:16px;overflow:auto;max-height:calc(100dvh - 48px)}
+.dlg-head{display:flex;justify-content:space-between;align-items:start;gap:16px}
+.dlg-head p{font-size:15px;color:var(--muted)}
+.dlg-head h2{font-size:24px;line-height:1.2;color:var(--navy);margin-top:2px}
+.x{width:44px;height:44px;flex:none;border:0;border-radius:8px;background:var(--paper);color:var(--ink);font-size:22px;cursor:pointer}
+.switch{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 16px;border-radius:8px;background:var(--paper);cursor:pointer;font-size:16px}
+.switch input{appearance:none;-webkit-appearance:none;width:46px;height:28px;border-radius:999px;background:#C5CDD6;position:relative;cursor:pointer;flex:none;margin:0;transition:background-color .2s var(--ease-out)}
+.switch input::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:transform .22s var(--ease-out)}
+.switch input:checked{background:var(--accent)}
+.switch input:checked::after{transform:translateX(18px)}
+.todo{display:grid;gap:10px;padding-left:20px;list-style:decimal;font-size:16px}
+.todo li::marker{color:var(--muted)}
+.doc-dlg{width:min(720px,calc(100vw - 32px))}
+.doc-dlg img{width:100%;height:auto;border-radius:6px;box-shadow:0 0 0 1px var(--line)}
+.doc-dlg p{font-size:15px;color:var(--muted)}
 </style>
 </head>
 <body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
 
-<header class="meta">
-  Universidad Nacional de Ingeniería<br>
-  Facultad de Ingeniería Mecánica
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Offset FIM, inicio"><b>Offset FIM</b><span data-site="sigla">OCISO-IDT</span></a>
+    <nav class="nav" aria-label="Principal">
+      <ul>
+        <li><a href="#la-oficina">La oficina</a></li>
+        <li><a href="#que-hacemos">Qué hacemos</a></li>
+        <li><a href="#ecosistema">Ecosistema</a></li>
+        <li><a href="#trayectoria">Trayectoria</a></li>
+        <li><a href="#equipo">Equipo</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn--accent" href="#contacto">Contacto</a>
+    <button class="menu-btn" type="button" id="menuBtn" aria-expanded="false" aria-controls="sm">Menú</button>
+  </div>
 </header>
 
-<main>
-  <h1>Offset<br>FIM</h1>
-  <p class="sigla">OCISO-IDT</p>
-  <h2>Oficina de Compensaciones Industriales y Sociales Offset para la Innovación y el Desarrollo Tecnológico</h2>
-  <div class="estado">Sitio en construcción / Próximamente</div>
+<div class="sm" id="sm" hidden>
+  <div class="sm-layer sm-layer--a"></div>
+  <div class="sm-layer sm-layer--b"></div>
+  <nav class="sm-panel" aria-label="Menú">
+    <div class="sm-top"><b>Offset FIM</b><button class="sm-close" type="button" id="smClose">Cerrar</button></div>
+    <ul class="sm-list">
+      <li><a href="#la-oficina">La oficina</a></li>
+      <li><a href="#que-hacemos">Qué hacemos</a></li>
+      <li><a href="#ecosistema">Ecosistema</a></li>
+      <li><a href="#trayectoria">Trayectoria</a></li>
+      <li><a href="#equipo">Equipo</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <p class="sm-foot">Facultad de Ingeniería Mecánica · Universidad Nacional de Ingeniería</p>
+  </nav>
+</div>
+
+<main id="contenido">
+
+  <section class="hero" id="inicio" aria-labelledby="hero-title">
+    <div class="wrap">
+      <p class="context">Universidad Nacional de Ingeniería · Facultad de Ingeniería Mecánica</p>
+      <h1 class="wordmark" id="hero-title"><span class="w">Offset</span> <span class="w">FIM</span></h1>
+      <div class="hero-meta">
+        <p class="fullname" id="fullname" data-site="nombre">Oficina de Compensaciones Industriales y Sociales Offset para la Innovación y el Desarrollo Tecnológico</p>
+        <div class="hero-side">
+          <p class="sigla" data-site="sigla">OCISO-IDT</p>
+          <p><span class="pend" data-pend="una línea de propósito de la oficina, en palabras de David"><span class="soft">Propósito de la oficina, por confirmar</span></span></p>
+          <a class="btn btn--ghost" href="#la-oficina">Conoce la oficina
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <figure class="expand" id="expand">
+      <div class="expand-frame" id="expandFrame">
+        <img id="expandImg" src="img/sima-delegacion-1440.webp" srcset="img/sima-delegacion-800.webp 800w, img/sima-delegacion-1440.webp 1440w" sizes="100vw" width="1440" height="1138" alt="Delegación de la UNI con cascos de seguridad frente a un buque en el astillero de SIMA-Perú" fetchpriority="high">
+      </div>
+      <figcaption class="wrap caption"><span>Delegación de la UNI en el astillero de SIMA-Perú</span><span class="pend" data-pend="año de la visita técnica y crédito de la foto"><span class="soft">Año por confirmar</span></span></figcaption>
+    </figure>
+  </section>
+
+  <section class="section" id="la-oficina" aria-labelledby="oficina-title">
+    <div class="wrap">
+      <p class="statement" id="statement">Cuando el Estado compra tecnología en el extranjero, una parte de ese valor puede volver al país como conocimiento, formación y proyectos. La oficina conecta esos compromisos con lo que la FIM sabe hacer.</p>
+      <p class="statement-note"><span class="pend" data-pend="BORRADOR, VALIDAR CON DAVID: texto general sobre compensaciones industriales"><span class="soft">Texto provisional, por validar con la oficina</span></span></p>
+
+      <div class="cols about fx">
+        <h2 class="h2 c-l" id="oficina-title">La oficina</h2>
+        <div class="prose c-r">
+          <p class="lead">La <span data-site="sigla">OCISO-IDT</span> es una oficina de la Facultad de Ingeniería Mecánica de la Universidad Nacional de Ingeniería, en Lima. Se la conoce como el Offset de la FIM.</p>
+          <p><span class="pend" data-pend="misión y alcance de la oficina, en sus propias palabras"><span class="soft">Misión y alcance de la oficina, por confirmar</span></span></p>
+          <p><span class="pend" data-pend="ubicación exacta dentro de la FIM (pabellón y oficina) y horario de atención"><span class="soft">Ubicación en la FIM y horario, por confirmar</span></span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--paper" aria-labelledby="howto-title">
+    <div class="wrap cols">
+      <div class="howto-head c-l">
+        <h2 class="h2" id="howto-title">Cómo funciona una compensación industrial</h2>
+        <p class="lead" style="font-size:18px;color:var(--muted)">Así se suele estructurar en compras públicas, sobre todo en defensa.</p>
+      </div>
+      <div class="c-r">
+        <div class="steps-wrap" id="steps">
+        <span class="steps-progress" id="stepsProgress" aria-hidden="true"></span>
+        <ol class="steps">
+          <li class="step"><h3>El Estado compra</h3><p>Una entidad pública adquiere bienes o servicios de un proveedor extranjero.</p></li>
+          <li class="step"><h3>El proveedor se compromete</h3><p>Como parte del contrato, asume devolver al país una parte del valor de la compra.</p></li>
+          <li class="step"><h3>Se transfiere capacidad</h3><p>La devolución llega como transferencia de tecnología, formación de personal, fabricación local, investigación conjunta o proyectos sociales.</p></li>
+          <li class="step"><h3>La universidad participa</h3><p>La FIM aporta capacidades técnicas, formula proyectos y acompaña lo que se transfiere.</p></li>
+        </ol>
+        </div>
+        <p class="howto-note"><span class="pend" data-pend="BORRADOR, VALIDAR CON DAVID: secuencia general del offset, sin cifras ni contratos"><span class="soft">Explicación general, por validar con la oficina</span></span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="que-hacemos" aria-labelledby="hacemos-title">
+    <div class="wrap">
+      <div class="cols fx" style="margin-bottom:clamp(40px,6vw,72px)">
+        <h2 class="h2 c-l" id="hacemos-title">Qué hacemos</h2>
+        <p class="lead c-r">Las líneas de trabajo de la oficina, cada una con un ejemplo concreto.</p>
+      </div>
+      <ul class="lines fx-list">
+        <li class="wline"><span class="t"><span class="skel"></span><span class="pend" data-pend="título de la línea de trabajo 1"></span></span><span class="d"><span class="skel"></span><span class="skel"></span><span class="pend" data-pend="descripción y ejemplo de la línea 1"></span></span></li>
+        <li class="wline"><span class="t"><span class="skel"></span><span class="pend" data-pend="título de la línea de trabajo 2"></span></span><span class="d"><span class="skel"></span><span class="skel"></span><span class="pend" data-pend="descripción y ejemplo de la línea 2"></span></span></li>
+        <li class="wline"><span class="t"><span class="skel"></span><span class="pend" data-pend="título de la línea de trabajo 3"></span></span><span class="d"><span class="skel"></span><span class="skel"></span><span class="pend" data-pend="descripción y ejemplo de la línea 3"></span></span></li>
+      </ul>
+      <p style="margin-top:28px;font-size:15px;color:var(--soft)">Contenido por confirmar con la oficina</p>
+    </div>
+  </section>
+
+  <section class="section section--paper" id="ecosistema" aria-labelledby="eco-title">
+    <div class="wrap">
+      <div class="cols fx">
+        <h2 class="h2 c-l" id="eco-title">Academia, industria y Estado</h2>
+        <div class="c-r prose">
+          <p class="lead">La Facultad de Ingeniería Mecánica coopera con la industria y el Estado para impulsar la investigación, la transferencia tecnológica y la formación de talento especializado.</p>
+          <!-- [CONFIRMAR] Estas alianzas aparecen como alianzas de la UNI en el material del foro "Perú Marítimo 2050".
+               No está confirmado que sean convenios de la OCISO-IDT. -->
+          <ul class="partners fx-list">
+            <li><b>Universidad de Ulsan</b><span>Academia, Corea del Sur</span></li>
+            <li><b>HD Hyundai Heavy Industries</b><span>Industria naval, Corea del Sur</span></li>
+            <li><b>SIMA-Perú</b><span>Servicios Industriales de la Marina</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ag" id="ag" role="group" aria-label="Visita técnica de la UNI a SIMA-Perú">
+        <button class="ag-panel is-active" type="button" aria-pressed="true">
+          <img src="img/sima-hangar-1100.webp" srcset="img/sima-hangar-640.webp 640w, img/sima-hangar-1100.webp 1100w" sizes="(min-width:900px) 60vw, 100vw" width="1100" height="869" alt="Estudiantes y docentes de la UNI escuchan a un representante de SIMA frente al hangar de submarinos" loading="lazy">
+          <span class="ag-label"><b>Hangar de submarinos</b><span>SIMA-Perú · visita técnica UNI</span></span>
+        </button>
+        <button class="ag-panel" type="button" aria-pressed="false">
+          <img src="img/sima-planta-1100.webp" srcset="img/sima-planta-640.webp 640w, img/sima-planta-1100.webp 1100w" sizes="(min-width:900px) 60vw, 100vw" width="1100" height="869" alt="Un ingeniero de SIMA explica la operación de la planta a la delegación bajo un pórtico" loading="lazy">
+          <span class="ag-label"><b>Explicación en planta</b><span>SIMA-Perú · visita técnica UNI</span></span>
+        </button>
+        <button class="ag-panel" type="button" aria-pressed="false">
+          <img src="img/sima-taller-1100.webp" srcset="img/sima-taller-640.webp 640w, img/sima-taller-1100.webp 1100w" sizes="(min-width:900px) 60vw, 100vw" width="1100" height="869" alt="Integrantes de la delegación revisan perfiles estructurales de acero en un taller del astillero" loading="lazy">
+          <span class="ag-label"><b>Estructuras en taller</b><span>SIMA-Perú · visita técnica UNI</span></span>
+        </button>
+        <button class="ag-panel" type="button" aria-pressed="false">
+          <img src="img/uni-campus-1600.webp" srcset="img/uni-campus-800.webp 800w, img/uni-campus-1600.webp 1600w" sizes="(min-width:900px) 60vw, 100vw" width="1600" height="900" alt="Vista aérea del campus de la Universidad Nacional de Ingeniería en Lima" loading="lazy">
+          <span class="ag-label"><b>Campus de la UNI</b><span>Lima · vista aérea</span></span>
+        </button>
+      </div>
+      <!-- MOSTRAR_LOGOS_ALIADOS = false: el bloque de logos (SIMA y otros) se activa cuando David confirme el permiso. -->
+      <p class="allies"><span class="pend" data-pend="permiso para mostrar los logos de los aliados"><span class="soft">Logos de aliados, por confirmar permiso</span></span></p>
+    </div>
+  </section>
+
+  <section class="section" id="trayectoria" aria-labelledby="tray-title">
+    <div class="wrap">
+      <div class="fx">
+        <h2 class="h2" id="tray-title">De 1876 a hoy</h2>
+        <p class="facts">
+          <span>La UNI cumple <b><span data-count="150">150</span> años</b></span>
+          <span>Ingeniería Naval en la FIM hace <b><span data-count="33">33</span> años</b></span>
+          <span>Acreditación ABET de la FIM, <b>2014–2026</b></span>
+          <span>Lema <b>Scientia et Labor</b></span>
+        </p>
+      </div>
+      <ol class="timeline fx-list">
+        <li class="tl">
+          <span class="yr">1876</span>
+          <span class="when">Fundación</span>
+          <p>Se funda la Escuela de Construcciones Civiles y de Minas, origen de la Universidad Nacional de Ingeniería.</p>
+        </li>
+        <li class="tl">
+          <span class="yr">1993</span>
+          <span class="when">30 de diciembre</span>
+          <p>La UNI crea la especialidad de Ingeniería Naval en la FIM, en convenio con la Marina de Guerra del Perú, con ingreso desde la Admisión 1994-1.</p>
+          <button class="doc" type="button" id="docBtn" aria-haspopup="dialog">
+            <img src="img/rr-1163-1993-340.webp" width="340" height="362" alt="" loading="lazy"><span>Ver la Resolución Rectoral N.° 1163</span>
+          </button>
+        </li>
+        <li class="tl">
+          <span class="yr">2026</span>
+          <span class="when">Aniversario</span>
+          <p>La Universidad Nacional de Ingeniería cumple 150 años.</p>
+        </li>
+        <li class="tl">
+          <span class="yr">2026</span>
+          <span class="when">30 de julio · CIP-CD Lima</span>
+          <p>Foro Estratégico Nacional Perú Marítimo 2050, junto al CIP-CD Lima, la FIM y la Escuela de Ingeniería Naval y Oceánica.</p>
+          <p><span class="pend" data-pend="confirmar a la oficina como organizadora del foro"><span class="soft">Participación de la oficina, por confirmar</span></span></p>
+        </li>
+      </ol>
+      <p class="tl-pend"><span class="pend" data-pend="fecha y resolución de creación de la oficina, proyectos y convenios con sus fechas"><span class="soft">Hitos propios de la oficina, por confirmar</span></span></p>
+    </div>
+  </section>
+
+  <section class="section section--paper" id="equipo" aria-labelledby="equipo-title">
+    <div class="wrap">
+      <h2 class="h2 fx" id="equipo-title" style="margin-bottom:clamp(36px,5vw,56px)">Equipo</h2>
+      <div class="team fx">
+        <div class="monogram" aria-hidden="true">DA</div>
+        <div class="person">
+          <h3 data-site="director">David Nicanor Amaya Fuertes</h3>
+          <p>Director de la <span data-site="sigla">OCISO-IDT</span> · Magíster, ingeniero naval</p>
+          <span class="pend" data-pend="foto del director"><span class="soft">Foto por recibir</span></span>
+        </div>
+      </div>
+      <p class="team-more"><span class="pend" data-pend="integrantes del equipo: nombre, cargo y foto"><span class="soft">Integrantes del equipo, por confirmar</span></span></p>
+    </div>
+  </section>
+
+  <section class="section closing" id="contacto" aria-labelledby="contacto-title">
+    <img class="closing-photo" src="img/uni-campus-duo-1600.webp" srcset="img/uni-campus-duo-800.webp 800w, img/uni-campus-duo-1600.webp 1600w" sizes="100vw" width="1600" height="900" alt="" loading="lazy">
+    <div class="wrap closing-grid">
+      <h2 class="h2 fx" id="contacto-title">Contacto con la oficina</h2>
+      <dl class="cdl fx-list">
+        <div><dt>Dirección</dt><dd>Facultad de Ingeniería Mecánica, Universidad Nacional de Ingeniería, Lima · <span class="pend" data-pend="pabellón y oficina"><span class="soft">pabellón por confirmar</span></span></dd></div>
+        <div><dt>Correo</dt><dd><span class="pend" data-pend="correo institucional"><span class="soft">Por confirmar</span></span></dd></div>
+        <div><dt>Teléfono</dt><dd><span class="pend" data-pend="teléfono y anexo"><span class="soft">Por confirmar</span></span></dd></div>
+        <div><dt>Horario</dt><dd><span class="pend" data-pend="horario de atención"><span class="soft">Por confirmar</span></span></dd></div>
+        <div><dt>Sitios relacionados</dt><dd><a href="https://fim.uni.edu.pe" target="_blank" rel="noopener">fim.uni.edu.pe</a> · <a href="https://www.uni.edu.pe" target="_blank" rel="noopener">uni.edu.pe</a></dd></div>
+      </dl>
+    </div>
+  </section>
 </main>
 
-<footer class="meta">
-  <span>Lima — Perú</span>
-  <span>2026</span>
+<footer class="foot">
+  <div class="wrap">
+    <span><b data-site="sigla">OCISO-IDT</b> · Facultad de Ingeniería Mecánica · Universidad Nacional de Ingeniería</span>
+    <span>Fotos: visita técnica UNI a SIMA-Perú y campus UNI, créditos por confirmar</span>
+    <span>© 2026 · Desarrollado por Árkos</span>
+  </div>
 </footer>
 
+<button class="review-btn" type="button" id="reviewBtn" aria-haspopup="dialog">Pendientes (<span id="todoCount">14</span>)</button>
+
+<dialog id="reviewDlg" aria-labelledby="reviewTitle">
+  <div class="dlg">
+    <div class="dlg-head">
+      <div><p>Nota de maqueta · no forma parte del sitio</p><h2 id="reviewTitle">Lo que falta para publicar</h2></div>
+      <button class="x" type="button" data-close aria-label="Cerrar">×</button>
+    </div>
+    <label class="switch" for="reviewToggle">Resaltar pendientes en la página<input type="checkbox" id="reviewToggle"></label>
+    <ol class="todo" id="todoList">
+      <li>Texto de la oficina en sus palabras: misión, alcance y qué es el offset para la FIM (reemplaza el borrador).</li>
+      <li>Línea de propósito para el inicio.</li>
+      <li>Líneas de trabajo: título, descripción y un ejemplo por cada una.</li>
+      <li>Proyectos y convenios de la oficina, con fechas.</li>
+      <li>Fecha y resolución de creación de la oficina.</li>
+      <li>Equipo: nombres, cargos y fotos, incluida la del director.</li>
+      <li>Correo, teléfono con anexo, pabellón y oficina, horario.</li>
+      <li>Logo propio en vectorial (.AI, .SVG o .PDF).</li>
+      <li>Sigla correcta: OCISO-IDT u OCISO-DIT (los créditos del foro dicen "Director OCISO-DIT").</li>
+      <li>Subdominio: offset.fim.uni.edu.pe u ociso.uni.edu.pe.</li>
+      <li>Permiso para mostrar logos de aliados (SIMA y otros).</li>
+      <li>Confirmar si Ulsan, HD Hyundai y SIMA son convenios de la oficina o de la FIM.</li>
+      <li>Confirmar a la oficina como organizadora del Foro Perú Marítimo 2050.</li>
+      <li>Año de la visita técnica a SIMA y créditos de las fotos.</li>
+    </ol>
+  </div>
+</dialog>
+
+<dialog id="docDlg" class="doc-dlg" aria-labelledby="docTitle">
+  <div class="dlg">
+    <div class="dlg-head">
+      <div><p>30 de diciembre de 1993</p><h2 id="docTitle">Resolución Rectoral N.° 1163</h2></div>
+      <button class="x" type="button" data-close aria-label="Cerrar">×</button>
+    </div>
+    <img src="img/rr-1163-1993-676.webp" width="676" height="720" alt="Resolución Rectoral N.° 1163 de la UNI, del 30 de diciembre de 1993, que aprueba la creación de la especialidad de Ingeniería Naval en la Facultad de Ingeniería Mecánica en convenio con la Marina de Guerra del Perú" loading="lazy">
+    <p>Aprueba la creación de la especialidad de Ingeniería Naval en la FIM y su inclusión en el proceso de Admisión 1994-1, según el convenio con la Marina de Guerra del Perú. Acuerdo del Consejo Universitario, sesión N.° 17 del 8 de diciembre de 1993.</p>
+  </div>
+</dialog>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"GovernmentOrganization","name":"Oficina de Compensaciones Industriales y Sociales Offset para la Innovación y el Desarrollo Tecnológico","alternateName":["OCISO-IDT","Offset FIM"],"parentOrganization":{"@type":"CollegeOrUniversity","name":"Universidad Nacional de Ingeniería","url":"https://www.uni.edu.pe","department":{"@type":"Organization","name":"Facultad de Ingeniería Mecánica"}},"address":{"@type":"PostalAddress","addressLocality":"Lima","addressCountry":"PE"}}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js"></script>
+<script>
+(() => {
+  /* Constantes de contenido (equivalen a src/content/site.ts en la versión Next.js) */
+  const SITE = {
+    sigla: 'OCISO-IDT',             // por confirmar: OCISO-IDT u OCISO-DIT
+    nombre: 'Oficina de Compensaciones Industriales y Sociales Offset para la Innovación y el Desarrollo Tecnológico',
+    director: 'David Nicanor Amaya Fuertes',
+    contacto: { correo: null, telefono: null, direccion: null },
+    MOSTRAR_LOGOS_ALIADOS: false
+  };
+  document.querySelectorAll('[data-site]').forEach(el => { const v = SITE[el.dataset.site]; if (typeof v === 'string') el.textContent = v; });
+
+  /* Pendientes: cada .pend lleva su texto exacto para el modo revisión */
+  document.querySelectorAll('.pend[data-pend]').forEach(el => {
+    const hard = document.createElement('span');
+    hard.className = 'hard';
+    hard.textContent = '[' + (el.dataset.pend.startsWith('BORRADOR') ? el.dataset.pend : 'PENDIENTE: ' + el.dataset.pend) + ']';
+    el.appendChild(hard);
+  });
+  document.getElementById('todoCount').textContent = document.querySelectorAll('#todoList li').length;
+  const toggle = document.getElementById('reviewToggle');
+  toggle.addEventListener('change', () => document.documentElement.classList.toggle('review', toggle.checked));
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const G = window.gsap;
+  const motion = !!G && !reduce;
+  if (G && window.ScrollTrigger) G.registerPlugin(ScrollTrigger);
+  if (G && window.SplitText) G.registerPlugin(SplitText);
+
+  /* Header con sombra al bajar */
+  const hdr = document.getElementById('hdr');
+  const onScroll = () => hdr.classList.toggle('is-scrolled', window.scrollY > 8);
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  /* Línea activa del menú */
+  const navLinks = [...document.querySelectorAll('.nav a')];
+  if ('IntersectionObserver' in window) {
+    const spy = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) navLinks.forEach(a => a.setAttribute('aria-current', String(a.getAttribute('href') === '#' + e.target.id)));
+    }), { rootMargin: '-45% 0px -50% 0px' });
+    navLinks.forEach(a => { const s = document.querySelector(a.getAttribute('href')); if (s) spy.observe(s); });
+  }
+
+  /* Menú móvil escalonado (port de StaggeredMenu) */
+  const sm = document.getElementById('sm'), menuBtn = document.getElementById('menuBtn');
+  const layers = sm.querySelectorAll('.sm-layer'), panel = sm.querySelector('.sm-panel'), items = sm.querySelectorAll('.sm-list a');
+  let smTl = null;
+  function openMenu() {
+    sm.hidden = false; sm.classList.add('is-open'); menuBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    if (motion) {
+      smTl && smTl.kill();
+      smTl = G.timeline()
+        .fromTo(layers, { xPercent: 100 }, { xPercent: 0, duration: .5, ease: 'power4.out', stagger: .07 })
+        .fromTo(panel, { xPercent: 100 }, { xPercent: 0, duration: .65, ease: 'power4.out' }, .12)
+        .fromTo(items, { yPercent: 140, rotate: 6 }, { yPercent: 0, rotate: 0, duration: .9, ease: 'power4.out', stagger: .05 }, .3);
+    }
+    items[0].focus({ preventScroll: true });
+  }
+  function closeMenu() {
+    menuBtn.setAttribute('aria-expanded', 'false'); document.body.style.overflow = '';
+    const done = () => { sm.hidden = true; sm.classList.remove('is-open'); };
+    if (motion) {
+      smTl && smTl.kill();
+      smTl = G.timeline({ onComplete: done })
+        .to([panel, ...layers].reverse(), { xPercent: 100, duration: .32, ease: 'power3.in', stagger: .04 });
+    } else done();
+    menuBtn.focus({ preventScroll: true });
+  }
+  menuBtn.addEventListener('click', openMenu);
+  document.getElementById('smClose').addEventListener('click', closeMenu);
+  sm.addEventListener('click', e => { if (e.target.closest('.sm-list a')) closeMenu(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !sm.hidden) closeMenu(); });
+
+  /* Galería en acordeón (port de AccordionGallery) */
+  const panels = [...document.querySelectorAll('#ag .ag-panel')];
+  function setActive(i) {
+    panels.forEach((p, k) => { const on = k === i; p.classList.toggle('is-active', on); p.setAttribute('aria-pressed', String(on)); });
+  }
+  panels.forEach((p, i) => {
+    p.addEventListener('mouseenter', () => { if (window.matchMedia('(hover:hover)').matches) setActive(i); });
+    p.addEventListener('click', () => setActive(i));
+    p.addEventListener('focus', () => setActive(i));
+    p.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); panels[(i + 1) % panels.length].focus(); }
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); panels[(i - 1 + panels.length) % panels.length].focus(); }
+    });
+  });
+
+  /* Diálogos que nacen desde su disparador */
+  function openDlg(dlg, from) {
+    if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
+    if (motion && from) {
+      const b = from.getBoundingClientRect(), d = dlg.getBoundingClientRect();
+      dlg.style.transformOrigin = `${b.left + b.width / 2 - d.left}px ${b.top + b.height / 2 - d.top}px`;
+      G.fromTo(dlg, { scale: .95, opacity: 0 }, { scale: 1, opacity: 1, duration: .2, ease: 'power2.out' });
+    }
+  }
+  function closeDlg(dlg) {
+    const done = () => { dlg.close ? dlg.close() : dlg.removeAttribute('open'); G && G.set(dlg, { clearProps: 'all' }); };
+    if (motion) G.to(dlg, { scale: .96, opacity: 0, duration: .16, ease: 'power2.in', onComplete: done }); else done();
+  }
+  document.querySelectorAll('dialog').forEach(dlg => {
+    dlg.addEventListener('click', e => { if (e.target.closest('[data-close]') || e.target === dlg) closeDlg(dlg); });
+    dlg.addEventListener('cancel', e => { e.preventDefault(); closeDlg(dlg); });
+  });
+  const reviewBtn = document.getElementById('reviewBtn'), docBtn = document.getElementById('docBtn');
+  reviewBtn.addEventListener('click', () => openDlg(document.getElementById('reviewDlg'), reviewBtn));
+  docBtn.addEventListener('click', () => openDlg(document.getElementById('docDlg'), docBtn));
+
+  if (!G) return;
+  const below = el => el.getBoundingClientRect().top > window.innerHeight;
+
+  /* CountUp: solo cantidades reales; en reposo ya muestran el valor final */
+  document.querySelectorAll('[data-count]').forEach(el => {
+    if (!motion || !below(el)) return;
+    const end = +el.dataset.count, o = { v: 0 };
+    G.to(o, { v: end, duration: 1.1, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 90%', once: true },
+      onStart: () => { el.textContent = '0'; }, onUpdate: () => { el.textContent = Math.round(o.v); } });
+  });
+
+  const mm = G.matchMedia();
+  mm.add('(prefers-reduced-motion: no-preference)', () => {
+    /* SplitText: el wordmark y el nombre entran por máscara */
+    const hero = () => {
+      if (!window.SplitText) return;
+      const word = SplitText.create('.wordmark', { type: 'chars', mask: 'chars' });
+      G.from(word.chars, { yPercent: 105, duration: .9, ease: 'power3.out', stagger: .035 });
+      const name = SplitText.create('#fullname', { type: 'lines', mask: 'lines' });
+      G.from(name.lines, { yPercent: 100, duration: .8, ease: 'power3.out', stagger: .06, delay: .25 });
+    };
+    document.fonts && document.fonts.status !== 'loaded' ? document.fonts.ready.then(hero) : hero();
+
+    /* ScrollExpand: la foto se abre a sangre al bajar */
+    const narrow = window.innerWidth < 700;
+    G.fromTo('#expandFrame', { clipPath: `inset(0% ${narrow ? 4 : 7}% 0% ${narrow ? 4 : 7}% round 12px)` },
+      { clipPath: 'inset(0% 0% 0% 0% round 0px)', ease: 'none', scrollTrigger: { trigger: '#expand', start: 'top 92%', end: 'top 18%', scrub: .4 } });
+    G.fromTo('#expandImg', { scale: 1.1 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: '#expand', start: 'top 92%', end: 'bottom top', scrub: .4 } });
+
+    /* ScrollReveal: la declaración se aclara palabra por palabra */
+    const st = document.getElementById('statement');
+    st.innerHTML = st.textContent.trim().split(/\s+/).map(w => `<span class="word">${w}</span>`).join(' ');
+    G.fromTo(st.querySelectorAll('.word'), { opacity: .25, filter: 'blur(3px)' },
+      { opacity: 1, filter: 'blur(0px)', ease: 'none', stagger: .05, scrollTrigger: { trigger: st, start: 'top 82%', end: 'bottom 52%', scrub: true } });
+
+    /* Progreso de la secuencia */
+    G.fromTo('#stepsProgress', { scaleY: 0 }, { scaleY: 1, ease: 'none', scrollTrigger: { trigger: '#steps', start: 'top 70%', end: 'bottom 60%', scrub: .3 } });
+
+    /* FadeContent / AnimatedContent: entradas de bloques y filas escalonadas */
+    document.querySelectorAll('.fx').forEach(el => {
+      if (!below(el)) return;
+      G.from(el, { y: 16, opacity: 0, duration: .55, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 88%', once: true } });
+    });
+    document.querySelectorAll('.fx-list').forEach(list => {
+      if (!below(list)) return;
+      G.from(list.children, { y: 16, opacity: 0, duration: .5, ease: 'power2.out', stagger: .03, scrollTrigger: { trigger: list, start: 'top 88%', once: true } });
+    });
+    document.querySelectorAll('.step').forEach(el => {
+      if (!below(el)) return;
+      G.from(el, { y: 16, opacity: 0, duration: .55, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 85%', once: true } });
+    });
+    if (below(document.getElementById('ag'))) {
+      G.from('#ag .ag-panel', { y: 24, opacity: 0, duration: .6, ease: 'power3.out', stagger: .06, scrollTrigger: { trigger: '#ag', start: 'top 85%', once: true } });
+    }
+  });
+})();
+</script>
 </body>
 </html>
